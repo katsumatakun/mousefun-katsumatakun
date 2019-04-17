@@ -12,6 +12,22 @@ public class Dot {
 		color = Color.BLUE;
 	}
 
+	public int getRadius() {
+		return radius;
+	}
+
+	public Point getCenter() {
+		return center;
+	}
+
+	public boolean isInside(Point p){
+		return p.distance(center)<radius;
+	}
+
+	public void setColor(Color c){
+		this.color = c;
+
+	}
 	void paint(Graphics g){
 		g.setColor(color);
 		g.fillOval(center.x-radius,center.y-radius, radius*2, radius*2 );

@@ -25,6 +25,7 @@ public class MousePanel extends JPanel {
 		super.paintComponent(g);
 		if (location != null) {
 			Dot d = new Dot(location);
+			d.setColor(Color.red);
 			d.paint(g);
  		}
 		for (Dot d:dotList){
@@ -42,13 +43,19 @@ public class MousePanel extends JPanel {
 			location  =e.getPoint();
 			System.out.println(location);
 			repaint();
-
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
 			System.out.println("MousePressed");
-			location  =e.getPoint();
+			location = e.getPoint();
+			for(Dot d: dotList){
+				if(d.isInside(location)){
+					//Is location inside dot?
+					dotList.remove(d);
+					break;
+				}
+			}
 			repaint();
 		}
 
